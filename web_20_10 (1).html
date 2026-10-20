@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gửi cậu một chút dịu dàng 💗</title>
+<style>
+:root{--pink:#ff7fa7;--rose:#ffb7cb;--cream:#fff8f5;--ink:#6e4052}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:radial-gradient(circle at top,#fff 0,#fff0f5 45%,#ffe2eb 100%);overflow-x:hidden}
+main{min-height:100vh;display:grid;place-items:center;padding:24px;position:relative}
+.card{width:min(100%,560px);text-align:center;padding:34px 24px 30px;border:1px solid #ffffffc9;border-radius:30px;background:#ffffffb8;box-shadow:0 20px 70px #c55c8424;backdrop-filter:blur(10px);position:relative;z-index:2;animation:rise .9s ease both}
+.eyebrow{font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:#c56b8a}
+h1{font-size:clamp(2.2rem,9vw,4rem);line-height:1.05;margin:12px 0;color:#df638d}
+.subtitle{font-size:1.08rem;line-height:1.7;margin:0 auto 22px;max-width:420px}
+.flower{font-size:4.4rem;display:inline-block;filter:drop-shadow(0 7px 8px #e889a344);animation:sway 3s ease-in-out infinite}
+button{border:0;border-radius:999px;padding:14px 22px;background:linear-gradient(135deg,#ff8eb2,#f26d9b);color:white;font-weight:700;font-size:1rem;box-shadow:0 10px 24px #e86e9c4d;cursor:pointer;transition:transform .2s}
+button:hover{transform:translateY(-2px) scale(1.02)}
+.message{display:none;margin:24px auto 0;padding:20px 18px;max-width:430px;border-radius:20px;background:#fff4f7;border:1px dashed #f2a0ba;line-height:1.8;animation:rise .5s ease both}
+.message.show{display:block}
+.signature{margin-top:14px;font-weight:700;color:#d95e89}
+.hint{font-size:.82rem;opacity:.7;margin-top:20px}
+.heart{position:fixed;top:-30px;z-index:1;pointer-events:none;animation:fall linear forwards;opacity:.75}
+.sparkle{position:absolute;font-size:1.2rem;animation:twinkle 2s ease-in-out infinite}
+.s1{left:10%;top:18%}.s2{right:11%;top:22%;animation-delay:.8s}.s3{left:17%;bottom:15%;animation-delay:1.2s}.s4{right:15%;bottom:12%;animation-delay:.4s}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes sway{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg);opacity:0}}
+@keyframes twinkle{0%,100%{opacity:.35;transform:scale(.85)}50%{opacity:1;transform:scale(1.2)}}
+@media(max-width:420px){.card{padding:28px 18px;border-radius:24px}.subtitle{font-size:1rem}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<main>
+  <span class="sparkle s1">✦</span><span class="sparkle s2">♡</span>
+  <span class="sparkle s3">✧</span><span class="sparkle s4">♡</span>
+  <section class="card">
+    <div class="eyebrow">A little note for you</div>
+    <div class="flower" aria-hidden="true">🌷</div>
+    <h1>Chúc mừng<br>20/10!</h1>
+    <p class="subtitle">Chúc cậu luôn vui vẻ, được yêu thương thật nhiều và ngày nào cũng có những điều nhỏ xinh khiến cậu mỉm cười. 💗</p>
+    <button id="openBtn" type="button">Mở món quà nhỏ ✨</button>
+    <div class="message" id="message" aria-live="polite">
+      Gửi đến những người bạn đáng quý của Nori✨</p>Nhân ngày 20/10, chúc các cậu luôn vui vẻ, xinh tươi, gặp thật nhiều may mắn và luôn được yêu thương. Mong rằng mỗi ngày đều mang đến cho các cậu những niềm vui nhỏ bé, những nụ cười rạng rỡ và thật nhiều điều tốt đẹp. Chúc các cậu học tập thật tốt, luôn tự tin theo đuổi ước mơ và giữ mãi nét đáng yêu của riêng mình. Cảm ơn vì đã trở thành một phần thanh xuân đáng nhớ, mong chúng ta sẽ cùng nhau tạo thêm thật nhiều kỷ niệm đẹp nhé! 🌸💗
+</p>— Nori ♡
+      <div class="signature">— Gửi cậu, với tất cả sự chân thành ♡</div>
+    </div>
+    <div class="hint">Chạm vào nút để mở lời nhắn bí mật ♡</div>
+  </section>
+</main>
+<script>
+const btn = document.getElementById('openBtn');
+const message = document.getElementById('message');
+let opened = false;
+btn.addEventListener('click', () => {
+  opened = !opened;
+  message.classList.toggle('show', opened);
+  btn.textContent = opened ? 'Gửi thêm một cái ôm ♡' : 'Mở món quà nhỏ ✨';
+  if (opened) burst();
+});
+function burst(){
+  const symbols = ['💗','🌸','♡','✨','🌷'];
+  for(let i=0;i<22;i++){
+    const el=document.createElement('span');
+    el.className='heart';
+    el.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+    el.style.left=Math.random()*100+'vw';
+    el.style.animationDuration=(3+Math.random()*3)+'s';
+    el.style.fontSize=(14+Math.random()*18)+'px';
+    document.body.appendChild(el);
+    setTimeout(()=>el.remove(),6500);
+  }
+}
+// A few gentle floating hearts in the background
+setInterval(()=>{
+  const el=document.createElement('span');
+  el.className='heart';
+  el.textContent=['♡','✿','💗'][Math.floor(Math.random()*3)];
+  el.style.left=Math.random()*100+'vw';
+  el.style.animationDuration=(6+Math.random()*4)+'s';
+  el.style.fontSize=(12+Math.random()*12)+'px';
+  document.body.appendChild(el);
+  setTimeout(()=>el.remove(),10500);
+},900);
+</script>
+</body>
+</html>
